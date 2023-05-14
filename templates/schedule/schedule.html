@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css_add %}
+    <link rel="stylesheet" href="{% static 'css/news.css' %}"/>
+{% endblock css_add %}
+
+
+{% block content %}
+
+<div class="news_block">
+    <div class="container">
+        {% for g in group %}
+        <h1>{{ g.name }} тобына арналған кесте</h1>
+        {% endfor %}
+
+        {% for day in days %}
+        <h2 class="font-weight-bold text-center my-2">{{ day.name }}</h2>
+        <div class="shadow-lg mb-5 bg-white rounded">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Уақыт</th>
+                        <th>Оқытушы</th>
+                        <th>Кабинет</th>
+                        <th>Сабақ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for lesson in lessons %}
+                    {% if lesson.day.name == day.name %}
+                    <tr>
+                        <td>{{ lesson.time.time }}</td>
+                        <td>{{ lesson.tutor.fullname }}</td>
+                        <td>{{ lesson.cabinet.cab }}</td>
+                        <td>{{ lesson.subject.name }}</td>
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+    
+{% endblock  %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css_add %}
+    <link rel="stylesheet" href="{% static 'css/detail_news.css' %}"/>
+{% endblock css_add %}
+
+
+
+{% block content %}
+
+
+<div class="news_block">
+    <div class="container">
+        <div class="shadow-lg mb-5 bg-white rounded">
+            <div class="card my-3">
+                <h6 class="card-header">{{news.datetime}}</h6>
+                <div class="card-body">
+                    <img class="main_img" src="{{news.image.url}}" alt="{{news.name}}">
+                    <h1 class="card-title text-center font-weight-bold">{{news.title}}</h1>
+                    <p class="card-text">{{news.text|linebreaks}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

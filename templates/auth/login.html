@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<div class="container my-4 vh-100 h-100 justify-content-center align-items-center">
+    <div class="row align-items-center h-100">
+        <div class="col-12 mx-auto col-md-6 text-center">
+            <form method="post">
+                {% csrf_token %}
+                <div class="shadow-lg p-3 mb-5 bg-white rounded">
+                    <h2 class="text-center">Кіру</h2>
+                    {% for field in form%}
+                        <div class="form-group my-3">
+                            {% render_field field class="form-control " placeholder=field.label %}
+                            {% for error in field.errors %}
+                            <span class="help-block">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+                    
+                    <div class="form-group d-grid">
+                        <button class="btn btn-success mt-4 " type="submit">Кіру</button>
+                    </div>
+                </div> 
+            </form>
+        </div>
+    </div>
+</div>  
+
+
+
+{% endblock %}
+

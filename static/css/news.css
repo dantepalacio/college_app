@@ -1,0 +1,23 @@
+
+.card {
+    border-radius: 10px;
+    padding-bottom: 10px;
+}
+
+.card-margintop{
+    margin-top: 70px;
+}
+
+.card-header {
+    background-color: rgb(162, 162, 172);
+}
+
+.news_block {
+    margin-top: 4rem;
+}
+
+
+td {
+    -ms-word-break: break-all;
+    word-break: break-word;
+  }

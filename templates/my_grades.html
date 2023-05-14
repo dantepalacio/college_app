@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css_add %}
+    <link rel="stylesheet" href="{% static 'css/news.css' %}"/>
+{% endblock css_add %}
+
+
+{% block content %}
+
+<div class="news_block">
+
+    <div class="container">
+        <h1>{{student_info.last_name}} {{student_info.first_name}} бағалары</h1>
+        <p>Сіздің GPA: <span class="avg_grade">{{gpa|floatformat:2 }}</span></p>
+
+        {% for subject in average %}
+        <h2 class="font-weight-bold">{{ subject.subject }}</h2>
+        <div class="shadow-lg mb-5 bg-white rounded">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Күні</th>
+                        <th scope="col">Баға</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for grade in grades %}
+                    {% if grade.subject|stringformat:"s" == subject.subject|stringformat:"s" %}
+                        <tr>
+                            <td>{{ grade.date }}</td>
+                            <td>{{ grade.grade}}</td>
+                        </tr>
+                    {% endif %}
+                    {% endfor %}
+                        <tr>
+                            <td><h5>Орташа балл:</h5></td>
+                            <td><span class="avg_grade">{{ subject.avg_grade|floatformat:2 }}</span></td>
+                        </tr>
+                </tbody>
+            </table>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+{% block js %}
+    <script src="{% static 'js/my_grades.js' %}"></script>
+{% endblock js %}

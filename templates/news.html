@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css_add %}
+    <link rel="stylesheet" href="{% static 'css/news.css' %}"/>
+{% endblock css_add %}
+
+{% block content %}
+
+
+<div class="news_block">
+
+    <div class="container">
+        {% for new in news %}
+        <div class="shadow-lg mb-5 bg-white rounded">
+            <div class="card my-3">
+                <h5 class="card-header">{{new.datetime}}</h5>
+                <div class="card-body">
+                <h5 class="card-title">{{new.title}}</h5>
+                <p class="card-text">{{new.text|truncatechars:'150'}}</p>
+                
+                <a href="{% url 'news_detail_page' new.pk %}" class="btn btn-primary">Оқу</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+{% endblock content %}
+
