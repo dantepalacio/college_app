@@ -28,8 +28,17 @@
             </button>
         </div>
         <nav class="sidebar">
+
+            {% if user.is_authenticated %}
+                <div class="user_info">
+                    <h1>Cәлем, <br>{{student_info.first_name}} {{student_info.last_name}}</h1>
+                    {% for group in groups %}
+                        <h1>{{group.name}}</h1>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
             <div class="text"> Мәзір </div>
-    
             <ul>
                 <li><a href="{% url 'news_page' %}"> Жаңалықтар </a></li>
                 {% if user.is_authenticated %}

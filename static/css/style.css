@@ -1,5 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
+
 body{
     background-color: var(--white);
+    font-family: 'Roboto', sans-serif;
 }
 
 :root {
@@ -54,8 +58,8 @@ ol, ul {
     height: 100%;
     top: 0;
     left: -250px;
-    background: #1b1b1b;
     transition: left 0.4s ease;
+    background: var(--white);
     z-index: 1;
 }
 
@@ -71,6 +75,23 @@ ol, ul {
     text-align: center;
     background: #ffffff;
     letter-spacing: 1px;
+}
+
+.user_info {
+    text-align: center;
+    padding: 10px;
+    border-bottom: 1px solid grey;
+}
+
+
+.user_info h1:last-child {
+    font-weight: 600;
+}
+
+.sidebar h1 {
+    font-size: 20px;
+    font-weight: 400;
+    font-style: italic;
 }
 
 nav ul{

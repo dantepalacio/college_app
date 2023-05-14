@@ -4,7 +4,7 @@ from django.views.generic import ListView, DetailView
 from college_app import models
 from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import reverse_lazy
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.db.models import Avg
 from django.http import HttpResponse
 from django import template
@@ -39,7 +39,7 @@ class News(ListView):
 		queryset = super().get_queryset()
 		return queryset.order_by('-id')
 
-class DetailNews(DetailView):
+class DetailNews(LoginRequiredMixin, DetailView):
 	model = models.News
 	template_name = 'detail_news.html'
 	context_object_name = 'news'
